@@ -13,6 +13,18 @@ var taskSchema = new Schema ({
   updated_at: Date
 });
 
+//before .save in app.js, it runs this function first
+taskSchema.pre('save', function(next){
+  //get current Date
+  var currentDate = new Date();
+  //update Date
+  this.updated_at = currentDate;
+  //create date only if it doesnt exist
+  if (!this.created_at)
+    this.created_at = currentDate;
+  next();
+});
+
 //creating the model with name Task
 var Task = mongoose.model('Task', taskSchema);
 //exporting the model and make it available for user
