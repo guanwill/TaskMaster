@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
     <title></title>
   </head>
   <body>
@@ -12,7 +13,7 @@
     <form id="edit_task" action="/update/<%=task._id%>", method="post">
         <div>
           <label for="task">Task: </label>
-          <input type="text" id="task" name="task" value="<%= task.task %>"></input>
+          <input type="text" id="task" name="task" value="<%= task.task %>"></input> <!--VALUE HERE GRABS EXISTING CONTENT TO EDIT-->
         </div>
 
         <div>
