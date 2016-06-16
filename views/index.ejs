@@ -3,34 +3,40 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
-    <title></title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+
+    <title>My Tasks</title>
   </head>
   <body>
-    <h1>TO DO 8=D </h1>
 
-    <a <a class="waves-effect waves-light btn-large text" href="/new">Create Task</a>
+    <div class="container">
+    <h1 class="header">Task Master </h1>
 
-    <table>
+    <p class="p-create-task"><a class="waves-effect waves-light btn z-depth-2 create-task" href="/new">New Task</a></p>
+
+    <table class="highlight bordered">
       <thead>
         <tr>
-          <th data-field="id">Task</th>
-          <th data-field="id">Content</th>
+          <th class="td-align-left">Title</th>
+          <th class="td-align-left">Task</th>
         </tr>
       </thead>
 
       <tbody>
-          <p><% for(var i = 0; i < tasks.length; i++){ %></p>
-            <tr>
-              <td><b> <%= tasks[i].task %> </b></td>
-               <td> <%= tasks[i].content %> </td>
-               <td><a class="waves-effect waves-light btn-large text" href="/edit/<%=tasks[i]._id%>"> Edit Task </a></td>
-               <td><a class="waves-effect waves-light btn-large text" href="/destroy/<%=tasks[i]._id%>"> Delete Task </a></td> <!--grab the id from task loop and push it to the destroy link-->
+           <% for(var i = 0; i < tasks.length; i++){ %>
 
+            <tr>
+               <td class="td-align-left"> <%= tasks[i].task %> </td>
+               <td class="td-align-left"> <%= tasks[i].content %> </td>
+               <td><a class="btn-floating btn waves-effect waves-light orange edit-delete" href="/edit/<%=tasks[i]._id%>"> <i class="small material-icons"> mode_edit </i> </a> &nbsp<a class="btn-floating btn waves-effect waves-light red edit-delete" href="/destroy/<%=tasks[i]._id%>"> <i class="small material-icons"> delete </i> </a></td> <!--grab the id from task loop and push it to the destroy link-->
             </tr>
+
           <% } %>
 
     </tbody>
   </table>
 
+  </div>
   </body>
 </html>
