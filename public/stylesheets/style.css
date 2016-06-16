@@ -1,0 +1,37 @@
+/*-----INDEX-----*/
+.edit-delete {
+  margin-right: 10px;
+}
+th {
+  text-align: right;
+}
+td {
+  text-align: right;
+}
+.td-align-left{
+  text-align: left;
+}
+a.create-task {
+  display: inline-block;
+  border-radius: 10px;
+  text-align: center;
+  margin: 20px 0 40px 0;
+}
+.p-create-task{
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+.header {
+  text-align: center;
+}
+
+/*-----NEW-----*/
+.submit-new{
+  display: block;
+  text-align: center;
+  margin-top: 30px;
+}
+.big-container {
+  margin: 150px;
+}
