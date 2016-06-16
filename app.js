@@ -80,9 +80,41 @@ wednesdayTask.save(function(err) {
 // });
 
 //Alternative way to find and update
-Task.findByIdAndUpdate('576200f02c6eccb0b90472a9', { content: 'go to Mars' }, function(err, task) {
- if (err) throw err;
+// Task.findByIdAndUpdate('576200f02c6eccb0b90472a9', { content: 'go to Mars' }, function(err, task) {
+//  if (err) throw err;
+//
+//  // we have the updated user returned to us
+//  console.log(task);
+// });
 
- // we have the updated user returned to us
- console.log(task);
-});
+//Delete a task (model)
+// Task.findByIdAndRemove('576200f02c6eccb0b90472a9', function(err) {
+//  if (err) throw err;
+//
+//  console.log('Task deleted!');
+// });
+
+//--------------------EXPRESS-------------------------
+//using express
+var express = require('express');
+//requires express
+var app = express();
+//telling the express that we are using ejs as a rendering engine
+app.set('view engine', 'ejs');
+
+app.get('/', function(request, response){  //using express for routing and printing out content
+    response.render('index');  //using object syntax because of pug.
+})
+
+
+
+
+
+
+
+
+
+
+app.listen(9000,function(){  //using express to load the server
+  console.log('Example app listening on port 9000!');
+})
