@@ -8,6 +8,7 @@ var Schema = mongoose.Schema;
 //creating the model properties(columns) using a Schema
 var taskSchema = new Schema ({
   task: String,
+  content: String,
   done: Boolean,
   created_at: Date,
   updated_at: Date
