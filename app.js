@@ -6,39 +6,39 @@ var Task = require('./db');
 
 
 //create model content (test)
-var mondayTask = new Task ({
-  task: 'first task',
-  content: 'go to city',
-  done: 'true'
-});
-
-var tuesdayTask = new Task ({
-  task: 'second task',
-  content: 'go to the zoo',
-  done: 'true'
-});
-
-var wednesdayTask = new Task ({
-  task: '8===D ~----~ ',
-  content: 'go to ({})',
-  done: 'true'
-});
+// var mondayTask = new Task ({
+//   task: 'first task',
+//   content: 'go to city',
+//   done: 'true'
+// });
+//
+// var tuesdayTask = new Task ({
+//   task: 'second task',
+//   content: 'go to the zoo',
+//   done: 'true'
+// });
+//
+// var wednesdayTask = new Task ({
+//   task: '8===D ~----~ ',
+//   content: 'go to ({})',
+//   done: 'true'
+// });
 
 //save the model content
-mondayTask.save(function(err) {
-  if (err) throw err;
-  console.log('Task has been created successfully');
-});
-
-tuesdayTask.save(function(err) {
-  if (err) throw err;
-  console.log('Task has been created successfully');
-});
-
-wednesdayTask.save(function(err) {
-  if (err) throw err;
-  console.log('Task has been created successfully');
-});
+// mondayTask.save(function(err) {
+//   if (err) throw err;
+//   console.log('Task has been created successfully');
+// });
+//
+// tuesdayTask.save(function(err) {
+//   if (err) throw err;
+//   console.log('Task has been created successfully');
+// });
+//
+// wednesdayTask.save(function(err) {
+//   if (err) throw err;
+//   console.log('Task has been created successfully');
+// });
 
 //find all our tasks
 // Task.find({}, function(err, tasks){
@@ -97,31 +97,52 @@ wednesdayTask.save(function(err) {
 //--------------------EXPRESS-------------------------
 //using express
 var express = require('express');
+//use body-parser
+var bodyParser = require('body-parser');
+//use var connect
+var connect = require('connect');
 //requires express
 var app = express();
+//make app use body-parser
+app.use(bodyParser.urlencoded({ extended: false }));
+
 //telling the express that we are using ejs as a rendering engine
 app.set('view engine', 'ejs');
 
 app.get('/', function(request, response){  //using express for routing and printing out content
-    response.render('index');  //using object syntax because of pug.
+    Task.find(function(e, docs){
+    response.render('index', {tasks: docs});  //using object syntax because of pug.  
+    })
+
 })
 
 app.get('/new', function(request, response){
     response.render('new');
 })
 
-app.post('/new', function(request, response){
-      if (request) {
+app.post('/new', function(req, res){
+      if (req.body) {
+        console.log(req.body);
+
         // Get values from POST request. These can be done through forms or REST calls. These rely on the "name" attributes for forms
         var task = req.body.task;  //body is a json property, it's not referring to the body tag
         var content = req.body.content;
 
         //call the create function for our database
-        mongoose.model('Task').create({
+        Task.create({
             task : task,
             content : content
-        }
-      )};
+        }, function(e, task){
+          res.format({
+            "text/html": function() {
+              res.redirect('/');
+            }
+            // json: function(){
+            //   res.json(task);
+            // }
+          })
+        });
+      };
 })
 
 

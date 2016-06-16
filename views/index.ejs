@@ -9,6 +9,9 @@
 
     <button><a href="/new">Create Task</a></button>
 
+    <p><% for(var i = 0; i < tasks.length; i++){ %></p>
+      <span> <%= tasks[i].content %> </span>
 
+    <% } %>
   </body>
 </html>
