@@ -17,9 +17,3 @@ var taskSchema = new Schema ({
 var Task = mongoose.model('Task', taskSchema);
 //exporting the model and make it available for user
 module.exports = Task;
-
-//create model content (test)
-var mondayTask = new Task ({
-  task: 'do stuff',
-  done: 'true'
-});
