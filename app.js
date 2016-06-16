@@ -113,8 +113,8 @@ app.get('/new', function(request, response){
 app.post('/new', function(request, response){
       if (request) {
         // Get values from POST request. These can be done through forms or REST calls. These rely on the "name" attributes for forms
-        var task = req.body.task;  //body is a json property, it's not referring to the body tag
-        var content = req.body.content;
+        var task = request.body.task;  //body is a json property, it's not referring to the body tag
+        var content = request.body.content;
 
         //call the create function for our database
         mongoose.model('Task').create({
