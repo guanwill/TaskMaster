@@ -66,3 +66,23 @@ wednesdayTask.save(function(err) {
 //   if (err) throw err;
 //   console.log(task)
 // })
+
+//Find task by id and update
+// Task.findById('576200f02c6eccb0b90472a9', function(err, task){
+//   if (err) throw err;
+//
+//   task.content = 'go to school';
+//
+//   task.save(function(err){
+//     if (err) throw err;
+//     console.log('Update successful');
+//   });
+// });
+
+//Alternative way to find and update
+Task.findByIdAndUpdate('576200f02c6eccb0b90472a9', { content: 'go to Mars' }, function(err, task) {
+ if (err) throw err;
+
+ // we have the updated user returned to us
+ console.log(task);
+});
