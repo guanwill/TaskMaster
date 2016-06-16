@@ -164,7 +164,7 @@ app.post('/update/:id', function(req, res){  //grabbing the id from the delete l
       var content = req.body.content;
 
       //call the create function for our database
-      Task.update({_id: req.params.id}, {
+      Task.update({_id: req.params.id}, {  //MAKE SURE TO QUERY THE SPECIFIC ID TO UPDATE
           task : task,
           content : content
       }, function(e, task){

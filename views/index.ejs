@@ -2,20 +2,35 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
     <title></title>
   </head>
   <body>
     <h1>TO DO 8=D </h1>
 
-    <button><a href="/new">Create Task</a></button>
+    <a <a class="waves-effect waves-light btn-large text" href="/new">Create Task</a>
 
-    <p><% for(var i = 0; i < tasks.length; i++){ %></p>
-      <p><b> <%= tasks[i].task %> </b></p>
-      <p> <%= tasks[i].content %> </p>
-      <button><a href="/edit/<%=tasks[i]._id%>"> Edit Task </a></button>
-      <button><a href="/destroy/<%=tasks[i]._id%>"> Delete Task </a></button> <!--grab the id from task loop and push it to the destroy link-->
-      <hr>
-    <% } %>
+    <table>
+      <thead>
+        <tr>
+          <th data-field="id">Task</th>
+          <th data-field="id">Content</th>
+        </tr>
+      </thead>
+
+      <tbody>
+          <p><% for(var i = 0; i < tasks.length; i++){ %></p>
+            <tr>
+              <td><b> <%= tasks[i].task %> </b></td>
+               <td> <%= tasks[i].content %> </td>
+               <td><a class="waves-effect waves-light btn-large text" href="/edit/<%=tasks[i]._id%>"> Edit Task </a></td>
+               <td><a class="waves-effect waves-light btn-large text" href="/destroy/<%=tasks[i]._id%>"> Delete Task </a></td> <!--grab the id from task loop and push it to the destroy link-->
+
+            </tr>
+          <% } %>
+
+    </tbody>
+  </table>
 
   </body>
 </html>
