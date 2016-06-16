@@ -10,8 +10,12 @@
     <button><a href="/new">Create Task</a></button>
 
     <p><% for(var i = 0; i < tasks.length; i++){ %></p>
-      <span> <%= tasks[i].content %> </span>
-
+      <p><b> <%= tasks[i].task %> </b></p>
+      <p> <%= tasks[i].content %> </p>
+      <button><a href="/edit/<%=tasks[i]._id%>"> Edit Task </a></button>
+      <button><a href="/destroy/<%=tasks[i]._id%>"> Delete Task </a></button> <!--grab the id from task loop and push it to the destroy link-->
+      <hr>
     <% } %>
+
   </body>
 </html>

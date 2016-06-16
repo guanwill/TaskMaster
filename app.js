@@ -110,10 +110,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 
 app.get('/', function(request, response){  //using express for routing and printing out content
-    Task.find(function(e, docs){
-    response.render('index', {tasks: docs});  //using object syntax because of pug.  
+    Task.find(function(e, docs){  //find all tasks(instances)
+    response.render('index', {tasks: docs});  //render it in html. In ejs, display what we want to display
     })
-
 })
 
 app.get('/new', function(request, response){
@@ -122,8 +121,6 @@ app.get('/new', function(request, response){
 
 app.post('/new', function(req, res){
       if (req.body) {
-        console.log(req.body);
-
         // Get values from POST request. These can be done through forms or REST calls. These rely on the "name" attributes for forms
         var task = req.body.task;  //body is a json property, it's not referring to the body tag
         var content = req.body.content;
@@ -145,10 +142,45 @@ app.post('/new', function(req, res){
       };
 })
 
+app.get('/destroy/:id', function(req, res){  //grabbing the id from the delete link from index.ejs
+  Task.findById(req.params.id, function(err, task) {  //grabbing the id from above (the destroy url)
+    task.remove(function(err, task){ //remove it
+      res.redirect('/');
+    })
+  })
+})
 
+app.get('/edit/:id', function(req, response){
+    Task.findById(req.params.id, function(err, task){
+      response.render('edit', {task: task});  //render it in html. In ejs, display what we want to display
+    });
+})
 
+app.post('/update/:id', function(req, res){  //grabbing the id from the delete link from index.ejs
+  Task.findById(req.params.id, function(err, task) {  //grabbing the id from above (the destroy url)
+    if (req.body) {
+      // Get values from POST request. These can be done through forms or REST calls. These rely on the "name" attributes for forms
+      var task = req.body.task;  //body is a json property, it's not referring to the body tag
+      var content = req.body.content;
 
+      //call the create function for our database
+      Task.update({_id: req.params.id}, {
+          task : task,
+          content : content
+      }, function(e, task){
+        res.format({
+          "text/html": function() {
+            res.redirect('/');
+          }
+          // json: function(){
+          //   res.json(task);
+          // }
+        })
+      });
+    };
+  });
 
+});
 
 
 
