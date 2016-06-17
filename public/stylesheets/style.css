@@ -13,14 +13,13 @@ td {
 }
 a.create-task {
   display: inline-block;
-  border-radius: 10px;
   text-align: center;
-  margin: 20px 0 40px 0;
+  margin: 10px 0 0px 0;
+  border-radius: 10px;
 }
 .p-create-task{
   display: block;
-  margin: 0 auto;
-  text-align: center;
+  text-align: left;
 }
 .header {
   text-align: center;
@@ -34,4 +33,24 @@ a.create-task {
 }
 .big-container {
   margin: 150px;
+  position: relative;
+  top: 100px;
+}
+/*-----LOGO-----*/
+#logo-index {
+  display: block;
+  margin: 0 auto;
+  width: 380px;
+}
+#logo-new {
+  display: block;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 200px;
+}
+/*-----Back-----*/
+.back {
+  text-align: center;
+  font-size: 17px;
 }
