@@ -1,13 +1,15 @@
+_**[General Assembly Project - Not Maintained]**_
+
 # TaskMaster
 
-##Task
+## Task
 * A one-day project to build a basic CRUD application
 * Work in a team of three and delegate roles appropriately
 
-##Features
+## Features
 * Built a simple to-do app where users can create, edit, and destroy their tasks
 
-##Tech Used
+## Tech Used
 * Mongo
 * Mongoose
 * Node.js
